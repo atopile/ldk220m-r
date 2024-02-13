@@ -1,5 +1,16 @@
 import AdjustableLDO from "generics/regulators.ato"
 
+module LDK220M_R_5V from LDK220M_R:
+    """Preconfigured for 5V output"""
+    fb_divider.r_top.value = 18kohm +/- 10%
+    fb_divider.r_bottom.value = 5.1kohm +/- 10%
+
+
+module LDK220M_R_3V3 from LDK220M_R:
+    """Preconfigured for 3.3V output"""
+    fb_divider.r_top.value = 18kohm +/- 10%
+    fb_divider.r_bottom.value = 10kohm +/- 10%
+
 component _LDK220M_R:
     # component LDK220M-R
     footprint = "SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL"
@@ -14,6 +25,8 @@ component _LDK220M_R:
 
 
 module LDK220M_R from AdjustableRegulator:
+    """Adjustable LDO with 1.185V reference voltage,
+    max 200mA output current and max 13.2V input voltage"""
     # Vadj = 1.185V
     # Vo = Vadj * (1 + R1 / R2) = 1.185V * (1 + R1 / R2)
 
@@ -36,16 +49,8 @@ module LDK220M_R from AdjustableRegulator:
     output_bypass.value = 1uF +/- 20%
     output_bypass.footprint = "C0402"
 
-
     # voltage divider
     power_out ~ fb_divider.in
     fb_divider.out ~ ldo.adj
 
-module LDK220M_R_5V from LDK220M_R:
-    fb_divider.r_top.value = 18kohm +/- 10%
-    fb_divider.r_bottom.value = 5.1kohm +/- 10%
 
-
-module LDK220M_R_3V3 from LDK220M_R:
-    fb_divider.r_top.value = 18kohm +/- 10%
-    fb_divider.r_bottom.value = 10kohm +/- 10%
