@@ -29,6 +29,7 @@ module LDK220M_R from AdjustableLDO:
     """Adjustable LDO with 1.185V reference voltage,
     max 200mA output current and max 13.2V input voltage"""
     v_ref = 1.185V
+    i_q = 100uA to 300uA
     assert v_in within 2.5V to 13.2V
     # Vo = Vadj * (1 + R1 / R2) = 1.185V * (1 + R1 / R2)
 
