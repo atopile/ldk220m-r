@@ -1,6 +1,4 @@
 ato-version: ^0.2.39
 builds:
   default:
-    entry: elec/src/ldk220m-r.ato:LDK220M_R
-dependencies:
-- generics
+    entry: elec/src/ldk220m-r.ato:App
